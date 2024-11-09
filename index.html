@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Recommendations</title>
+    <title>Anime Watch Hub</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Anime Recommendation Hub</h1>
-        <input type="text" id="search" placeholder="Search for an anime...">
-        <button onclick="searchAnime()">Search</button>
+        <div class="container">
+            <h1>Anime Watch Hub</h1>
+            <div class="user-controls">
+                <a href="login.html" class="login-btn">Login</a>
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Search for an anime...">
+            <button onclick="searchAnime()">Search</button>
+        </div>
     </header>
 
     <main>
@@ -18,6 +25,10 @@
             <!-- Anime cards will be dynamically injected here -->
         </section>
     </main>
+
+    <footer>
+        <p>© Anime Watch Hub 2024</p>
+    </footer>
 
     <script src="animeApi.js"></script>
     <script src="script.js"></script>

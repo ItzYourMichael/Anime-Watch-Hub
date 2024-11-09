@@ -1,4 +1,3 @@
-// Function to fetch anime data from AniList API
 async function getAnimeData(query) {
     const response = await fetch('https://graphql.anilist.co', {
         method: 'POST',
@@ -24,7 +23,7 @@ async function getAnimeData(query) {
             variables: { search: query }
         })
     });
-    
+
     const result = await response.json();
     return result.data.Page.media;
 }
