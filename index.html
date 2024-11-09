@@ -4,33 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Watch Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Anime Watch Hub</h1>
-            <div class="user-controls">
-                <a href="login.html" class="login-btn">Login</a>
-            </div>
-        </div>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Search for an anime...">
-            <button onclick="searchAnime()">Search</button>
-        </div>
+        <h1>Anime Watch Hub</h1>
+        <p>Your ultimate place for anime recommendations and more!</p>
     </header>
 
-    <main>
-        <section id="anime-list">
-            <!-- Anime cards will be dynamically injected here -->
-        </section>
-    </main>
+    <!-- Authentication Buttons -->
+    <div class="auth-container">
+        <button id="login">Login with Google</button>
+        <button id="logout" style="display: none;">Logout</button>
+    </div>
 
-    <footer>
-        <p>© Anime Watch Hub 2024</p>
-    </footer>
+    <!-- Main Content -->
+    <section class="content">
+        <h2>Welcome to Anime Watch Hub</h2>
+        <p>Log in to save your favorite anime to your watchlist, view recommendations, and join the discussion.</p>
+    </section>
 
-    <script src="animeApi.js"></script>
-    <script src="script.js"></script>
+    <!-- Firebase and Main JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"></script>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
