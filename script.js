@@ -1,13 +1,13 @@
-// Sample anime data arrays
+// Sample anime data arrays with images
 const animeList = [
-  { name: "Naruto", description: "Ninja adventures", imageUrl: "https://example.com/naruto.jpg" },
-  { name: "One Piece", description: "Pirate adventures", imageUrl: "https://example.com/onepiece.jpg" },
-  { name: "Attack on Titan", description: "Humanity vs Titans", imageUrl: "https://example.com/aot.jpg" }
+  { name: "Naruto", description: "A young ninja's journey.", imageUrl: "https://example.com/naruto.jpg" },
+  { name: "One Piece", description: "Pirate adventures across the seas.", imageUrl: "https://example.com/onepiece.jpg" },
+  { name: "Attack on Titan", description: "Humanity fights for survival against Titans.", imageUrl: "https://example.com/aot.jpg" }
 ];
 
 const upcomingAnime = [
-  { name: "Demon Slayer: Swordsmith Village", description: "New Arc of Demon Slayer", imageUrl: "https://example.com/demonslayer.jpg" },
-  { name: "Jujutsu Kaisen Season 2", description: "Continuation of Jujutsu Kaisen", imageUrl: "https://example.com/jujutsu.jpg" }
+  { name: "Demon Slayer: Swordsmith Village", description: "Demon Slayer returns with a new arc.", imageUrl: "https://example.com/demonslayer.jpg" },
+  { name: "Jujutsu Kaisen Season 2", description: "The intense story continues.", imageUrl: "https://example.com/jujutsu.jpg" }
 ];
 
 // Populate anime sections
