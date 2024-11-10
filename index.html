@@ -1,66 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Watch Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
-    <script defer src="firebase.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Watch Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Logo and 3D Name -->
-    <header>
-        <div class="logo" onclick="goHome()">
-            <img src="logo.png" alt="Anime Watch Hub Logo">
-            <h1>Anime Watch Hub</h1>
-        </div>
-        <nav>
-            <ul>
-                <li onclick="showTab('home')">Home</li>
-                <li onclick="showTab('search')">Search</li>
-                <li onclick="showTab('recommend')">Random</li>
-                <li onclick="showTab('profile')">Profile</li>
-                <li onclick="showTab('settings')">Settings</li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="navbar-content">
+      <div class="anime-names">
+        <span>Popular Anime</span>
+        <span>New Releases</span>
+        <span>Top Rated</span>
+      </div>
+      <div class="profile-icon" onclick="toggleDropdown()">
+        <img src="profile-icon.png" alt="Profile">
+      </div>
+    </div>
+    <!-- Dropdown Menu -->
+    <div id="dropdown" class="dropdown hidden">
+      <a href="#">Profile</a>
+      <a href="#">Login</a>
+      <a href="#">Settings</a>
+    </div>
+  </header>
 
-    <!-- Main Content Area -->
-    <main id="content">
-        <section id="home" class="tab-content active">
-            <h2>Popular Anime</h2>
-            <div id="popular-anime">Loading popular anime...</div>
-        </section>
-        <section id="search" class="tab-content">
-            <h2>Search for Anime</h2>
-            <input type="text" id="search-input" placeholder="Enter anime name">
-            <button onclick="searchAnime()">Search</button>
-            <div id="search-results"></div>
-        </section>
-        <section id="recommend" class="tab-content">
-            <h2>Recommended Anime</h2>
-            <p>Select your favorite genres, and we'll recommend anime for you.</p>
-            <select id="genre-select">
-                <option>Action</option>
-                <option>Adventure</option>
-                <option>Fantasy</option>
-                <!-- Add more genres as needed -->
-            </select>
-            <button onclick="recommendAnime()">Get Recommendations</button>
-            <div id="recommend-results"></div>
-        </section>
-        <section id="profile" class="tab-content">
-            <h2>Your Profile</h2>
-            <button onclick="googleLogin()">Login with Google</button>
-            <div id="user-profile"></div>
-        </section>
-        <section id="settings" class="tab-content">
-            <h2>Settings</h2>
-            <!-- Settings options will be added here -->
-        </section>
-    </main>
+  <!-- Anime Grid Section -->
+  <section class="anime-grid">
+    <div class="anime-item"></div>
+    <div class="anime-item"></div>
+    <div class="anime-item"></div>
+    <div class="anime-item"></div>
+    <div class="anime-item"></div>
+    <div class="anime-item"></div>
+  </section>
 
+  <script src="script.js"></script>
 </body>
 </html>

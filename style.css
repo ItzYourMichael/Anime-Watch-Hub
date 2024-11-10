@@ -1,84 +1,98 @@
-/* Basic Reset */
+/* Reset CSS */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.navbar-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-.logo h1 {
-    font-size: 2em;
-    color: #f39c12;
-    margin-left: 10px;
-    transition: transform 0.3s;
+.anime-names span {
+  margin: 0 20px;
+  color: #ff6b6b;
+  cursor: pointer;
 }
 
-.logo h1:hover {
-    transform: scale(1.1);
+.anime-names span:hover {
+  text-decoration: underline;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
+.profile-icon {
+  margin-left: auto;
+  cursor: pointer;
+  position: relative;
 }
 
-nav li {
-    cursor: pointer;
-    color: #f39c12;
-    transition: color 0.3s;
+.profile-icon img {
+  width: 30px;
+  border-radius: 50%;
 }
 
-nav li:hover {
-    color: #f1c40f;
+/* Dropdown Menu */
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
-main {
-    padding: 20px;
+.dropdown a {
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
 }
 
-.tab-content {
-    display: none;
+.dropdown a:hover {
+  background-color: #eee;
 }
 
-.tab-content.active {
-    display: block;
-    animation: fadeIn 0.5s;
+/* Hidden class to toggle dropdown */
+.hidden {
+  display: none;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Anime Grid */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
-button {
-    background-color: #f39c12;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.anime-item {
+  background-color: #fff;
+  border: 2px solid #ff6b6b;
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  border-radius: 5px;
+  transition: transform 0.3s;
 }
 
-button:hover {
-    background-color: #e67e22;
+.anime-item:hover {
+  transform: scale(1.05);
 }
