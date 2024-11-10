@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Anime Watch Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1 class="site-title">Settings</h1>
+    <a href="index.html">Back to Home</a>
+  </header>
+
+  <section class="settings-container">
+    <h2>Theme Settings</h2>
+    <label for="themeColor">Choose a Theme Color:</label>
+    <select id="themeColor" onchange="changeThemeColor()">
+      <option value="#ffcc00">Yellow (Default)</option>
+      <option value="#ff6600">Orange</option>
+      <option value="#00cc99">Green</option>
+      <option value="#0066cc">Blue</option>
+      <option value="#cc00ff">Purple</option>
+    </select>
+  </section>
+
+  <script src="settings.js"></script>
+</body>
+</html>
