@@ -1,89 +1,69 @@
-/* Body and Global Styles */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #121212;
-  color: #ddd;
-  margin: 0;
-  padding: 0;
+  font-family: 'Verdana', sans-serif;
+  background: #121212;
+  color: #eeeeee;
 }
 
-/* Hero Banner */
-.hero {
-  background-image: url('https://example.com/banner-image.jpg'); /* Replace with your banner image URL */
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  padding: 100px 20px;
-  color: #fff;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #1e1e1e;
 }
 
-.hero h1 {
-  font-size: 3em;
-  margin: 0;
-  color: #ff9900;
+nav h1 {
+  font-size: 1.8em;
+  color: #ff4500;
 }
 
-.hero p {
-  font-size: 1.2em;
-  margin: 10px 0 20px;
-}
-
-.hero input[type="text"] {
-  padding: 15px;
-  width: 60%;
-  border-radius: 8px;
+.nav-buttons button {
+  margin-left: 10px;
+  padding: 10px;
+  background: #ff4500;
+  color: white;
   border: none;
-  font-size: 1em;
-  color: #333;
-  background: #fff;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-/* Section Titles */
+.search-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
 .anime-section h2 {
   font-size: 2em;
-  margin: 20px 0;
-  color: #ff6600;
+  color: #ff4500;
+  text-align: center;
 }
 
-/* Anime Grid */
 .anime-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
 }
 
-/* Anime Card */
 .anime-card {
-  background-color: #222;
+  background-color: #1e1e1e;
+  padding: 10px;
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.anime-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
 }
 
 .anime-card img {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  border-radius: 10px;
 }
 
-.anime-card .info {
-  padding: 15px;
+.anime-card:hover {
+  transform: scale(1.05);
 }
 
-.anime-card h3 {
-  font-size: 1.3em;
-  color: #ffcc00;
-  margin: 0 0 10px;
-}
-
-.anime-card p {
-  font-size: 0.9em;
-  color: #aaa;
+footer {
+  background-color: #1e1e1e;
+  padding: 10px;
+  text-align: center;
+  color: #ff4500;
 }

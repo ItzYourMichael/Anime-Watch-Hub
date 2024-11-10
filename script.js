@@ -1,42 +1,50 @@
-// Sample anime data arrays with images
-const animeList = [
-  { name: "Naruto", description: "A young ninja's journey.", imageUrl: "https://example.com/naruto.jpg" },
-  { name: "One Piece", description: "Pirate adventures across the seas.", imageUrl: "https://example.com/onepiece.jpg" },
-  { name: "Attack on Titan", description: "Humanity fights for survival against Titans.", imageUrl: "https://example.com/aot.jpg" }
-];
+// Import Firebase configuration
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from "firebase/firestore";
 
-const upcomingAnime = [
-  { name: "Demon Slayer: Swordsmith Village", description: "Demon Slayer returns with a new arc.", imageUrl: "https://example.com/demonslayer.jpg" },
-  { name: "Jujutsu Kaisen Season 2", description: "The intense story continues.", imageUrl: "https://example.com/jujutsu.jpg" }
-];
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-// Populate anime sections
-function displayAnime(animeArray, containerId) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = ""; // Clear any existing content
-  animeArray.forEach(anime => {
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Get anime list from Firebase
+async function loadAnimeList() {
+  const querySnapshot = await getDocs(collection(db, "animeList"));
+  const animeGrid = document.getElementById("animeGrid");
+  animeGrid.innerHTML = "";
+
+  querySnapshot.forEach((doc) => {
+    const animeData = doc.data();
     const animeCard = document.createElement("div");
     animeCard.classList.add("anime-card");
     animeCard.innerHTML = `
-      <img src="${anime.imageUrl}" alt="${anime.name}">
-      <div class="info">
-        <h3>${anime.name}</h3>
-        <p>${anime.description}</p>
-      </div>
+      <img src="${animeData.imageUrl}" alt="${animeData.name}">
+      <h3>${animeData.name}</h3>
+      <p>${animeData.description}</p>
+      <a href="${animeData.malUrl}" target="_blank">View on MAL</a>
     `;
-    container.appendChild(animeCard);
+    animeGrid.appendChild(animeCard);
   });
 }
 
-// Initial display of all anime and upcoming anime
-displayAnime(upcomingAnime, "upcomingGrid");
-displayAnime(animeList, "animeGrid");
+// Call function to load anime list on page load
+window.onload = loadAnimeList;
 
-// Search functionality
+// Search function
 function searchAnime() {
   const query = document.getElementById("searchInput").value.toLowerCase();
-  const filteredAnime = animeList.filter(anime =>
-    anime.name.toLowerCase().includes(query)
-  );
-  displayAnime(filteredAnime, "animeGrid");
+  const animeCards = document.querySelectorAll(".anime-card");
+  animeCards.forEach(card => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    card.style.display = title.includes(query) ? "block" : "none";
+  });
 }
