@@ -1,11 +1,16 @@
+/* General Body Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f0f2f5;
+  margin: 0;
+  color: #333;
 }
 
+/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
   background-color: #333;
   color: white;
@@ -13,13 +18,84 @@ header {
 
 .site-title {
   font-size: 24px;
+  color: #ffcc00; /* Highlight color */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
 }
 
 #searchInput {
   padding: 10px;
   font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  margin-right: 20px;
+  width: 200px;
 }
 
+/* Profile Icon */
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+.circle-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+/* Profile Menu */
+.profile-menu {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-menu a {
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  transition: background 0.2s ease;
+}
+
+.profile-menu a:last-child {
+  border-bottom: none;
+}
+
+.profile-menu a:hover {
+  background: #f0f0f0;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Anime Grid Styles */
 #animeGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -30,7 +106,29 @@ header {
 .anime-item {
   background-color: #fff;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.anime-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.anime-item img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.anime-item h3 {
+  margin: 10px 0;
+  font-size: 18px;
+  color: #ff6600; /* Vibrant color for anime title */
+}
+
+.anime-item p {
+  font-size: 14px;
+  color: #666;
 }

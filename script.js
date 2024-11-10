@@ -13,7 +13,7 @@ function displayAnime(animes) {
     const animeItem = document.createElement("div");
     animeItem.classList.add("anime-item");
     animeItem.innerHTML = `
-      <img src="${anime.imageUrl}" alt="${anime.name}" style="width:100%; border-radius: 5px;">
+      <img src="${anime.imageUrl}" alt="${anime.name}">
       <h3>${anime.name}</h3>
       <p>${anime.description}</p>
     `;
@@ -28,6 +28,12 @@ function searchAnime() {
     anime.name.toLowerCase().includes(query)
   );
   displayAnime(filteredAnime);
+}
+
+// Profile Menu Toggle
+function toggleProfileMenu() {
+  const profileMenu = document.getElementById("profileMenu");
+  profileMenu.classList.toggle("hidden");
 }
 
 // Initial display of all anime

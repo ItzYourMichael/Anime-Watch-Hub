@@ -8,14 +8,24 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <header>
     <h1 class="site-title">Anime Watch Hub</h1>
     <div class="nav">
       <input type="text" id="searchInput" placeholder="Search for Anime..." onkeyup="searchAnime()">
-      <a href="login.html">Login</a>
+      <div class="profile-icon" onclick="toggleProfileMenu()">
+        <!-- Profile Icon (Example using circle to match theme) -->
+        <div class="circle-icon"></div>
+      </div>
     </div>
   </header>
+
+  <!-- Profile Dropdown Menu -->
+  <div id="profileMenu" class="profile-menu hidden">
+    <a href="login.html">Login</a>
+    <a href="profile.html">Profile</a>
+    <a href="settings.html">Settings</a>
+  </div>
 
   <!-- Anime Grid -->
   <section id="animeGrid">
