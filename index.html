@@ -8,28 +8,38 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
+  <!-- Header with Title and Search -->
   <header>
     <h1 class="site-title">Anime Watch Hub</h1>
     <div class="nav">
-      <input type="text" id="searchInput" placeholder="Search for Anime..." onkeyup="searchAnime()">
+      <input type="text" id="searchInput" placeholder="Search Anime..." onkeyup="searchAnime()">
       <div class="profile-icon" onclick="toggleProfileMenu()">
-        <!-- Profile Icon (Example using circle to match theme) -->
         <div class="circle-icon"></div>
       </div>
     </div>
   </header>
 
-  <!-- Profile Dropdown Menu -->
+  <!-- Profile Menu -->
   <div id="profileMenu" class="profile-menu hidden">
     <a href="login.html">Login</a>
     <a href="profile.html">Profile</a>
     <a href="settings.html">Settings</a>
   </div>
 
-  <!-- Anime Grid -->
-  <section id="animeGrid">
-    <!-- Anime items will be populated here -->
+  <!-- Upcoming Anime Section -->
+  <section id="upcomingAnime" class="anime-section">
+    <h2>Upcoming Anime</h2>
+    <div class="anime-grid" id="upcomingGrid">
+      <!-- Upcoming anime cards will populate here -->
+    </div>
+  </section>
+
+  <!-- All Anime Section -->
+  <section id="allAnime" class="anime-section">
+    <h2>All Anime</h2>
+    <div class="anime-grid" id="animeGrid">
+      <!-- Anime cards will populate here -->
+    </div>
   </section>
 
   <script src="script.js"></script>

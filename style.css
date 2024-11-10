@@ -1,14 +1,12 @@
-:root {
-  --theme-color: #ffcc00; /* Default theme color */
-}
-
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  background-color: #f8f9fc;
   margin: 0;
   color: #333;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -20,13 +18,81 @@ header {
 
 .site-title {
   font-size: 24px;
-  color: var(--theme-color);
+  color: var(--theme-color, #ffcc00);
+}
+
+.nav input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 250px;
 }
 
 .profile-icon {
-  background-color: var(--theme-color);
+  width: 40px;
+  height: 40px;
+  background-color: var(--theme-color, #ffcc00);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
-.anime-item h3 {
-  color: var(--theme-color);
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Anime Section */
+.anime-section {
+  padding: 20px;
+}
+
+.anime-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Anime Grid */
+.anime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* Anime Card */
+.anime-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.anime-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.anime-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.anime-card .info {
+  padding: 15px;
+}
+
+.anime-card h3 {
+  font-size: 18px;
+  color: var(--theme-color, #ff6600);
+  margin: 5px 0;
+}
+
+.anime-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
 }
