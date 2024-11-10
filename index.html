@@ -8,34 +8,18 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <header class="navbar">
-    <div class="navbar-content">
-      <div class="anime-names">
-        <span>Popular Anime</span>
-        <span>New Releases</span>
-        <span>Top Rated</span>
-      </div>
-      <div class="profile-icon" onclick="toggleDropdown()">
-        <img src="profile-icon.png" alt="Profile">
-      </div>
-    </div>
-    <!-- Dropdown Menu -->
-    <div id="dropdown" class="dropdown hidden">
-      <a href="#">Profile</a>
-      <a href="#">Login</a>
-      <a href="#">Settings</a>
+  <!-- Navigation -->
+  <header>
+    <h1 class="site-title">Anime Watch Hub</h1>
+    <div class="nav">
+      <input type="text" id="searchInput" placeholder="Search for Anime..." onkeyup="searchAnime()">
+      <a href="login.html">Login</a>
     </div>
   </header>
 
-  <!-- Anime Grid Section -->
-  <section class="anime-grid">
-    <div class="anime-item"></div>
-    <div class="anime-item"></div>
-    <div class="anime-item"></div>
-    <div class="anime-item"></div>
-    <div class="anime-item"></div>
-    <div class="anime-item"></div>
+  <!-- Anime Grid -->
+  <section id="animeGrid">
+    <!-- Anime items will be populated here -->
   </section>
 
   <script src="script.js"></script>

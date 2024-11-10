@@ -1,28 +1,27 @@
-// Sample list of anime
+// Sample list of anime (you can replace this with data from Firestore later)
 const animeList = [
-  { name: "Naruto", imageUrl: "https://example.com/naruto.jpg" },
-  { name: "One Piece", imageUrl: "https://example.com/onepiece.jpg" },
-  { name: "Attack on Titan", imageUrl: "https://example.com/aot.jpg" },
-  { name: "Demon Slayer", imageUrl: "https://example.com/demonslayer.jpg" },
-  { name: "My Hero Academia", imageUrl: "https://example.com/mha.jpg" }
+  { name: "Naruto", description: "Ninja adventures", imageUrl: "https://example.com/naruto.jpg" },
+  { name: "One Piece", description: "Pirate journeys", imageUrl: "https://example.com/onepiece.jpg" },
+  { name: "Attack on Titan", description: "Humanity's fight for survival", imageUrl: "https://example.com/aot.jpg" }
 ];
 
-// Function to display anime items
+// Display anime items on page load
 function displayAnime(animes) {
-  const grid = document.getElementById("animeGrid");
-  grid.innerHTML = ""; // Clear previous results
+  const animeGrid = document.getElementById("animeGrid");
+  animeGrid.innerHTML = ""; // Clear previous results
   animes.forEach(anime => {
     const animeItem = document.createElement("div");
     animeItem.classList.add("anime-item");
     animeItem.innerHTML = `
-      <img src="${anime.imageUrl}" alt="${anime.name}">
+      <img src="${anime.imageUrl}" alt="${anime.name}" style="width:100%; border-radius: 5px;">
       <h3>${anime.name}</h3>
+      <p>${anime.description}</p>
     `;
-    grid.appendChild(animeItem);
+    animeGrid.appendChild(animeItem);
   });
 }
 
-// Search function
+// Filter anime list based on search input
 function searchAnime() {
   const query = document.getElementById("searchInput").value.toLowerCase();
   const filteredAnime = animeList.filter(anime =>
@@ -31,5 +30,5 @@ function searchAnime() {
   displayAnime(filteredAnime);
 }
 
-// Display all anime initially
+// Initial display of all anime
 displayAnime(animeList);
