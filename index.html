@@ -1,47 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Watch Hub</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico">
-    <!-- Link to CSS and other assets -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anime Watch Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <h1>Anime Watch Hub</h1>
-        <div class="nav-buttons">
-            <button onclick="openSearch()">Search Anime</button>
-            <button onclick="showFavorites()">Favorites</button>
-            <button onclick="openProfile()">Profile</button>
-        </div>
-    </nav>
 
-    <!-- Search Section -->
-    <section class="search-section" id="searchSection">
-        <input type="text" id="searchInput" placeholder="Search anime by name..." onkeyup="searchAnime()">
-    </section>
+  <!-- Search Box -->
+  <input type="text" id="searchBox" placeholder="Search anime...">
+  
+  <!-- Results Container -->
+  <div id="results"></div>
 
-    <!-- Anime List Section -->
-    <section id="animeList" class="anime-section">
-        <h2>Discover Popular Anime</h2>
-        <div class="anime-grid" id="animeGrid"></div>
-    </section>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Anime Watch Hub</p>
+  </footer>
 
-    <!-- Add buttons for Privacy Policy and Terms of Use -->
-    <div class="policy-container" style="text-align: center; margin-top: 20px;">
-        <a href="privacy.html" class="policy-button" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; margin: 5px;">Privacy Policy</a>
-        <a href="terms.html" class="policy-button" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; margin: 5px;">Terms of Use</a>
-    </div>
+  <!-- Script for MAL API Integration -->
+  <script>
+    const clientId = '699bdb47b4de16e03049b6eb2a1b297a'; // Replace with your actual client ID
 
-    <!-- Footer -->
-    <footer style="padding: 20px; text-align: center;">
-        <p>&copy; 2024 Anime Watch Hub | <a href="https://myanimelist.net/" target="_blank">Powered by MyAnimeList</a></p>
-    </footer>
+    // Function to search anime from MyAnimeList
+    async function searchAnime(query) {
+      const response = await fetch(`https://api.myanimelist.net/v2/anime?q=${query}&limit=10`, {
+        headers: {
+          'X-MAL-CLIENT-ID': clientId
+        }
+      });
+      const data = await response.json();
+      return data;
+    }
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    // Example usage
+    document.getElementById('searchBox').addEventListener('input', async (event) => {
+      const query = event.target.value;
+      if (query.length > 2) {
+        const animeResults = await searchAnime(query);
+        displayAnimeResults(animeResults);
+      }
+    });
+
+    function displayAnimeResults(animeData) {
+      const resultsContainer = document.getElementById('results');
+      resultsContainer.innerHTML = '';
+      animeData.data.forEach(anime => {
+        const animeCard = document.createElement('div');
+        animeCard.className = 'anime-card';
+        animeCard.innerHTML = `
+          <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}">
+          <h3>${anime.node.title}</h3>
+        `;
+        resultsContainer.appendChild(animeCard);
+      });
+    }
+  </script>
+
 </body>
 </html>
