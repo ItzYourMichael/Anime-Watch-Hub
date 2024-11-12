@@ -1,55 +1,3 @@
-
-// Import Firebase configuration
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// Get anime list from Firebase
-async function loadAnimeList() {
-  const querySnapshot = await getDocs(collection(db, "animeList"));
-  const animeGrid = document.getElementById("animeGrid");
-  animeGrid.innerHTML = "";
-
-  querySnapshot.forEach((doc) => {
-    const animeData = doc.data();
-    const animeCard = document.createElement("div");
-    animeCard.classList.add("anime-card");
-    animeCard.innerHTML = `
-      <img src="${animeData.imageUrl}" alt="${animeData.name}">
-      <h3>${animeData.name}</h3>
-      <p>${animeData.description}</p>
-      <a href="${animeData.malUrl}" target="_blank">View on MAL</a>
-    `;
-    animeGrid.appendChild(animeCard);
-  });
-}
-
-// Call function to load anime list on page load
-window.onload = loadAnimeList;
-
-// Search function
-function searchAnime() {
-  const query = document.getElementById("searchInput").value.toLowerCase();
-  const animeCards = document.querySelectorAll(".anime-card");
-  animeCards.forEach(card => {
-    const title = card.querySelector("h3").textContent.toLowerCase();
-    card.style.display = title.includes(query) ? "block" : "none";
-  });
-}
-
 const clientId = '699bdb47b4de16e03049b6eb2a1b297a'; // Replace with your actual client ID
 
 // Function to search anime from MyAnimeList
@@ -63,26 +11,31 @@ async function searchAnime(query) {
   return data;
 }
 
-// Example usage
+// Event listener for search input
 document.getElementById('searchBox').addEventListener('input', async (event) => {
-  const query = event.target.value;
+  const query = event.target.value.trim();
   if (query.length > 2) {
     const animeResults = await searchAnime(query);
     displayAnimeResults(animeResults);
+  } else {
+    document.getElementById('results').innerHTML = ''; // Clear results if query is too short
   }
 });
 
+// Function to display anime results
 function displayAnimeResults(animeData) {
   const resultsContainer = document.getElementById('results');
-  resultsContainer.innerHTML = '';
+  resultsContainer.innerHTML = ''; // Clear previous results
+
   animeData.data.forEach(anime => {
     const animeCard = document.createElement('div');
     animeCard.className = 'anime-card';
+    animeCard.style = "border: 1px solid #ddd; padding: 10px; text-align: center; width: 150px; border-radius: 8px;";
+
     animeCard.innerHTML = `
-      <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}">
-      <h3>${anime.node.title}</h3>
+      <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}" style="width: 100%; border-radius: 5px;">
+      <h3 style="font-size: 1em; margin: 10px 0;">${anime.node.title}</h3>
     `;
     resultsContainer.appendChild(animeCard);
   });
 }
-
