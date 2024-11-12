@@ -1,42 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Watch Hub</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="themes.css">
-  <link rel="icon" href="assets/favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Watch Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+    <!-- Link to CSS and other assets -->
 </head>
 <body>
+    <!-- Navbar -->
+    <nav>
+        <h1>Anime Watch Hub</h1>
+        <div class="nav-buttons">
+            <button onclick="openSearch()">Search Anime</button>
+            <button onclick="showFavorites()">Favorites</button>
+            <button onclick="openProfile()">Profile</button>
+        </div>
+    </nav>
 
-  <!-- Navbar -->
-  <nav>
-    <h1>Anime Watch Hub</h1>
-    <div class="nav-buttons">
-      <button onclick="openSearch()">Search Anime</button>
-      <button onclick="showFavorites()">Favorites</button>
-      <button onclick="openProfile()">Profile</button>
+    <!-- Search Section -->
+    <section class="search-section" id="searchSection">
+        <input type="text" id="searchInput" placeholder="Search anime by name..." onkeyup="searchAnime()">
+    </section>
+
+    <!-- Anime List Section -->
+    <section id="animeList" class="anime-section">
+        <h2>Discover Popular Anime</h2>
+        <div class="anime-grid" id="animeGrid"></div>
+    </section>
+
+    <!-- Add buttons for Privacy Policy and Terms of Use -->
+    <div class="policy-container" style="text-align: center; margin-top: 20px;">
+        <a href="privacy.html" class="policy-button" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; margin: 5px;">Privacy Policy</a>
+        <a href="terms.html" class="policy-button" style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px; margin: 5px;">Terms of Use</a>
     </div>
-  </nav>
 
-  <!-- Search Section -->
-  <section class="search-section" id="searchSection">
-    <input type="text" id="searchInput" placeholder="Search anime by name..." onkeyup="searchAnime()">
-  </section>
+    <!-- Footer -->
+    <footer style="padding: 20px; text-align: center;">
+        <p>&copy; 2024 Anime Watch Hub | <a href="https://myanimelist.net/" target="_blank">Powered by MyAnimeList</a></p>
+    </footer>
 
-  <!-- Anime List Section -->
-  <section id="animeList" class="anime-section">
-    <h2>Discover Popular Anime</h2>
-    <div class="anime-grid" id="animeGrid"></div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2023 Anime Watch Hub | <a href="https://myanimelist.net/" target="_blank">Powered by MyAnimeList</a></p>
-  </footer>
-
-  <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>

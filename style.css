@@ -68,3 +68,18 @@ footer {
   text-align: center;
   color: #ff4500;
 }
+
+.policy-button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.policy-button:hover {
+    background-color: #1d6fa5;
+}
+
