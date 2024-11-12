@@ -49,3 +49,40 @@ function searchAnime() {
     card.style.display = title.includes(query) ? "block" : "none";
   });
 }
+
+const clientId = '699bdb47b4de16e03049b6eb2a1b297a'; // Replace with your actual client ID
+
+// Function to search anime from MyAnimeList
+async function searchAnime(query) {
+  const response = await fetch(`https://api.myanimelist.net/v2/anime?q=${query}&limit=10`, {
+    headers: {
+      'X-MAL-CLIENT-ID': clientId
+    }
+  });
+  const data = await response.json();
+  return data;
+}
+
+// Example usage
+document.getElementById('searchBox').addEventListener('input', async (event) => {
+  const query = event.target.value;
+  if (query.length > 2) {
+    const animeResults = await searchAnime(query);
+    displayAnimeResults(animeResults);
+  }
+});
+
+function displayAnimeResults(animeData) {
+  const resultsContainer = document.getElementById('results');
+  resultsContainer.innerHTML = '';
+  animeData.data.forEach(anime => {
+    const animeCard = document.createElement('div');
+    animeCard.className = 'anime-card';
+    animeCard.innerHTML = `
+      <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}">
+      <h3>${anime.node.title}</h3>
+    `;
+    resultsContainer.appendChild(animeCard);
+  });
+}
+
