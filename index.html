@@ -6,13 +6,15 @@
     <title>Anime Watch Hub</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
+    <script defer src="anime.js"></script>
 </head>
 <body>
     <nav>
         <h1>Anime Watch Hub</h1>
-        <!-- Profile Icon -->
+        <!-- Search Section -->
+        <input id="searchBox" type="text" placeholder="Search Anime..." autocomplete="off">
         <div class="profile-container">
-            <img id="profileIcon" src="images/default-profile.png" alt="Profile Icon">
+            <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile Icon">
             <div id="profileDropdown" class="dropdown hidden">
                 <ul>
                     <li><a href="login.html" id="loginBtn">Login/Signup</a></li>
@@ -23,10 +25,8 @@
         </div>
     </nav>
 
-    <main>
-        <h2>Welcome to Anime Watch Hub</h2>
-        <p>Find your favorite anime, check details, and more!</p>
-    </main>
+    <!-- Anime Search Results -->
+    <section id="results" class="anime-grid"></section>
 
     <footer>
         &copy; 2024 Anime Watch Hub. All rights reserved.
