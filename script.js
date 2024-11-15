@@ -1,54 +1,65 @@
-import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from './firebase.js';
+import { auth, provider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const searchBox = document.getElementById('searchBox');
-  const resultsContainer = document.getElementById('results');
-  const themeToggle = document.getElementById('themeToggle');
+  const loginModal = document.getElementById('loginModal');
   const profileIcon = document.getElementById('profileIcon');
-  const dropdown = document.getElementById('profileDropdown');
+  const closeModal = document.getElementById('closeModal');
+  const loginTab = document.getElementById('loginTab');
+  const signupTab = document.getElementById('signupTab');
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
 
-  // Theme Toggle
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.body.dataset.theme || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.body.dataset.theme = newTheme;
-    themeToggle.querySelector('img').src = `assets/icons/${newTheme}-mode.svg`;
-  });
-
-  // Profile Dropdown Toggle
+  // Open modal
   profileIcon.addEventListener('click', () => {
-    dropdown.classList.toggle('hidden');
+    loginModal.classList.remove('hidden');
   });
 
-  // Search Anime
-  searchBox.addEventListener('input', async () => {
-    const query = searchBox.value.trim();
-    if (query.length > 2) {
-      resultsContainer.innerHTML = '<div class="spinner"></div>'; // Show spinner
-      try {
-        const response = await fetch(`https://api.myanimelist.net/v2/anime?q=${query}&limit=10`, {
-          headers: {
-            'X-MAL-CLIENT-ID': '699bdb47b4de16e03049b6eb2a1b297a'
-          }
-        });
-        const data = await response.json();
-        displaySearchResults(data);
-      } catch (error) {
-        console.error('Search failed:', error);
-      }
-    }
+  // Close modal
+  closeModal.addEventListener('click', () => {
+    loginModal.classList.add('hidden');
   });
 
-  function displaySearchResults(data) {
-    resultsContainer.innerHTML = '';
-    data.data.forEach((anime) => {
-      const card = document.createElement('div');
-      card.className = 'anime-card';
-      card.innerHTML = `
-        <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}">
-        <h3>${anime.node.title}</h3>
-      `;
-      resultsContainer.appendChild(card);
-    });
-  }
+  // Switch tabs
+  loginTab.addEventListener('click', () => {
+    loginForm.classList.add('active');
+    signupForm.classList.remove('active');
+    loginTab.classList.add('active');
+    signupTab.classList.remove('active');
+  });
+
+  signupTab.addEventListener('click', () => {
+    signupForm.classList.add('active');
+    loginForm.classList.remove('active');
+    signupTab.classList.add('active');
+    loginTab.classList.remove('active');
+  });
+
+  // Firebase: Login
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert('Logged in successfully!');
+        loginModal.classList.add('hidden');
+      })
+      .catch((error) => alert(error.message));
+  });
+
+  // Firebase: Signup
+  signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert('Account created successfully!');
+        loginModal.classList.add('hidden');
+      })
+      .catch((error) => alert(error.message));
+  });
 });
