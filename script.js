@@ -1,65 +1,65 @@
-import { auth, provider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from './firebase.js';
+import { auth, provider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const loginModal = document.getElementById('loginModal');
   const profileIcon = document.getElementById('profileIcon');
-  const closeModal = document.getElementById('closeModal');
-  const loginTab = document.getElementById('loginTab');
-  const signupTab = document.getElementById('signupTab');
-  const loginForm = document.getElementById('loginForm');
-  const signupForm = document.getElementById('signupForm');
+  const profileDropdown = document.querySelector('.profile-dropdown');
+  const searchInput = document.getElementById('searchInput');
+  const featuredGrid = document.querySelector('.featured-grid');
+  const trendingList = document.querySelector('.trending-list');
+  const toggleThemeButton = document.getElementById('toggleTheme');
+  let isDarkTheme = true;
 
-  // Open modal
+  // Toggle profile dropdown
   profileIcon.addEventListener('click', () => {
-    loginModal.classList.remove('hidden');
+    profileDropdown.classList.toggle('hidden');
   });
 
-  // Close modal
-  closeModal.addEventListener('click', () => {
-    loginModal.classList.add('hidden');
+  // Theme toggle
+  toggleThemeButton.addEventListener('click', () => {
+    isDarkTheme = !isDarkTheme;
+    document.body.style.backgroundColor = isDarkTheme ? '#121212' : '#ffffff';
+    document.body.style.color = isDarkTheme ? '#ffffff' : '#000000';
   });
 
-  // Switch tabs
-  loginTab.addEventListener('click', () => {
-    loginForm.classList.add('active');
-    signupForm.classList.remove('active');
-    loginTab.classList.add('active');
-    signupTab.classList.remove('active');
+  // Search functionality
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    // Perform search and update UI with results
+    console.log(`Searching for: ${query}`);
   });
 
-  signupTab.addEventListener('click', () => {
-    signupForm.classList.add('active');
-    loginForm.classList.remove('active');
-    signupTab.classList.add('active');
-    loginTab.classList.remove('active');
+  // Display featured and trending anime
+  function displayAnime() {
+    const animeData = [
+      { title: "Attack on Titan", image: "assets/attack_on_titan.jpg" },
+      { title: "My Hero Academia", image: "assets/my_hero_academia.jpg" },
+      // Add more anime data here
+    ];
+
+    animeData.forEach(anime => {
+      const animeCard = document.createElement('div');
+      animeCard.classList.add('anime-card');
+      animeCard.innerHTML = `<img src="${anime.image}" alt="${anime.title}"><p>${anime.title}</p>`;
+      featuredGrid.appendChild(animeCard);
+      trendingList.appendChild(animeCard.cloneNode(true)); // Clone for trending
+    });
+  }
+
+  displayAnime();
+
+  // Firebase Authentication (Sample)
+  const loginLink = document.getElementById('loginLink');
+  loginLink.addEventListener('click', async () => {
+    await signInWithPopup(auth, provider);
   });
 
-  // Firebase: Login
-  loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        alert('Logged in successfully!');
-        loginModal.classList.add('hidden');
-      })
-      .catch((error) => alert(error.message));
-  });
-
-  // Firebase: Signup
-  signupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('signupName').value;
-    const email = document.getElementById('signupEmail').value;
-    const password = document.getElementById('signupPassword').value;
-
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        alert('Account created successfully!');
-        loginModal.classList.add('hidden');
-      })
-      .catch((error) => alert(error.message));
+  // Detect auth state
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById('profileLink').textContent = user.displayName || "Profile";
+      document.getElementById('profileIcon').src = user.photoURL || "assets/Profiles/default-profile.png";
+      profileDropdown.querySelector('#loginLink').classList.add('hidden');
+      profileDropdown.querySelector('#logoutLink').classList.remove('hidden');
+    }
   });
 });

@@ -11,55 +11,40 @@
   <!-- Navbar -->
   <nav>
     <h1>Anime Watch Hub</h1>
-    <input id="searchBox" type="text" placeholder="Search Anime..." autocomplete="off">
     <div class="profile-container">
       <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile Icon">
-      <div id="profileDropdown" class="dropdown hidden">
-        <ul>
-          <li id="greetingMessage" class="hidden">Welcome, <span id="username">User</span>!</li>
-          <li><a href="#" id="loginBtn">Login/Signup</a></li>
-          <li><a href="profile.html" id="profileBtn" class="hidden">Profile</a></li>
-          <li><a href="settings.html">Settings</a></li>
-          <li><a href="#" id="logoutBtn" class="hidden">Logout</a></li>
-        </ul>
+      <div class="profile-dropdown hidden">
+        <p>Welcome, User!</p>
+        <a href="#" id="loginLink">Login/Signup</a>
+        <a href="#" id="profileLink">Profile</a>
+        <a href="#" id="settingsLink">Settings</a>
+        <a href="#" id="logoutLink">Logout</a>
       </div>
     </div>
-    <button id="themeToggle" class="theme-btn">
-      <img src="assets/icons/dark-mode.svg" alt="Toggle Theme">
-    </button>
+    <button id="toggleTheme">Toggle Theme</button>
   </nav>
 
+  <!-- Search Box -->
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search for an anime...">
+  </div>
+
   <!-- Featured Anime Section -->
-  <section id="featuredAnime" class="carousel">
+  <section id="featuredAnime">
     <h2>Featured Anime</h2>
-    <div class="carousel-inner">
-      <img src="assets/banners/anime1.jpg" alt="Featured Anime 1">
-      <img src="assets/banners/anime2.jpg" alt="Featured Anime 2">
-      <img src="assets/banners/anime3.jpg" alt="Featured Anime 3">
+    <div class="featured-grid">
+      <!-- Anime cards go here -->
     </div>
   </section>
 
-  <!-- Search Results -->
-  <section id="results" class="anime-grid"></section>
-
-  <!-- Trending Section -->
-  <section id="trendingAnime" class="trending-section">
+  <!-- Trending Anime Section -->
+  <section id="trendingAnime">
     <h2>Trending Anime</h2>
-    <div class="anime-grid">
-      <div class="anime-card">
-        <img src="assets/banners/anime1.jpg" alt="Trending Anime 1">
-        <h3>Attack on Titan</h3>
-      </div>
-      <div class="anime-card">
-        <img src="assets/banners/anime2.jpg" alt="Trending Anime 2">
-        <h3>My Hero Academia</h3>
-      </div>
+    <div class="trending-list">
+      <!-- Trending anime list goes here -->
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2024 Anime Watch Hub. All rights reserved.
-  </footer>
+  <footer>&copy; 2024 Anime Watch Hub. All rights reserved.</footer>
 </body>
 </html>

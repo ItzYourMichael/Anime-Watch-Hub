@@ -1,10 +1,9 @@
-/* General */
 body {
-  font-family: 'Verdana', sans-serif;
+  background-color: #121212;
+  color: #fff;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #121212;
-  color: #ffffff;
 }
 
 nav {
@@ -15,97 +14,77 @@ nav {
   background-color: #1e1e1e;
 }
 
+.profile-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .profile-container img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  cursor: pointer;
 }
 
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.3s ease;
-  z-index: 999;
-}
-
-.modal.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.modal-content {
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 400px;
-  position: relative;
-}
-
-.close-icon {
+.profile-dropdown {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 20px;
-  cursor: pointer;
-}
-
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.tabs button {
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 1.2em;
-  cursor: pointer;
+  top: 50px;
+  right: 0;
+  background-color: #333;
   padding: 10px;
-}
-
-.tabs button.active {
-  border-bottom: 2px solid #ff4500;
-}
-
-.form {
+  border-radius: 5px;
   display: none;
   flex-direction: column;
 }
 
-.form.active {
+.profile-dropdown a {
+  color: #ff4500;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.profile-container:hover .profile-dropdown {
   display: flex;
 }
 
-.form input {
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #444444;
-  background: #2a2a2a;
-  color: white;
+.search-container {
+  padding: 20px;
+  text-align: center;
 }
 
-.form button {
-  background: #ff4500;
-  color: white;
+.search-container input {
+  width: 50%;
   padding: 10px;
-  border: none;
   border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
+  border: 1px solid #444;
 }
 
-.form button:hover {
-  background: #e63939;
+#featuredAnime, #trendingAnime {
+  padding: 20px;
+}
+
+.featured-grid, .trending-list {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.featured-grid .anime-card, .trending-list .anime-card {
+  width: 150px;
+  background-color: #1e1e1e;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.featured-grid .anime-card:hover, .trending-list .anime-card:hover {
+  transform: scale(1.05);
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e1e1e;
 }
