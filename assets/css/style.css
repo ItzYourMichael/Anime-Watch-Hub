@@ -1,0 +1,64 @@
+/* General styles */
+body {
+  background-color: #121212;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Profile icon container */
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-container img {
+  cursor: pointer;
+}
+
+/* Profile dropdown */
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  min-width: 120px;
+  text-align: left;
+  z-index: 1;
+}
+
+.profile-container:hover .profile-dropdown,
+.profile-container:focus-within .profile-dropdown {
+  display: block;
+}
+
+.profile-dropdown a {
+  color: #ff4500;
+  text-decoration: none;
+  padding: 8px 10px;
+  display: block;
+}
+
+.profile-dropdown a:hover {
+  background-color: #444;
+}
+
+/* Search Box */
+#searchBox {
+  border: 2px solid #ff4500;
+  background-color: #333;
+  color: #fff;
+}
+
+#searchBox:focus {
+  outline: none;
+  border-color: #ff5722;
+}
+

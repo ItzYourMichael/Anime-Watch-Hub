@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&page=1`);
       const data = await response.json();
       animeResults.innerHTML = data.results.map(anime => `
-        <div>
+        <div class="anime-result">
           <h4>${anime.title}</h4>
-          <img src="${anime.image_url}" alt="${anime.title}">
+          <img src="${anime.image_url}" alt="${anime.title}" width="100">
         </div>
       `).join('');
     } else {
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function updateProfileUI(user) {
-    profileIcon.src = user.photoURL || "assets/Profiles/default-profile.png";
+    profileIcon.src = user.photoURL || "assets/images/default-profile.png";
     profileLink.textContent = user.displayName || "Profile";
     loginLink.style.display = 'none';
     logoutLink.style.display = 'block';
   }
 
   function resetProfileUI() {
-    profileIcon.src = "assets/Profiles/default-profile.png";
+    profileIcon.src = "assets/images/default-profile.png";
     profileLink.textContent = "Profile";
     loginLink.style.display = 'block';
     logoutLink.style.display = 'none';
