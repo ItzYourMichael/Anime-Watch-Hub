@@ -1,3 +1,4 @@
+/* General styles */
 body {
   background-color: #121212;
   color: #fff;
@@ -6,6 +7,7 @@ body {
   padding: 0;
 }
 
+/* Navbar styling */
 nav {
   display: flex;
   justify-content: space-between;
@@ -14,6 +16,7 @@ nav {
   background-color: #1e1e1e;
 }
 
+/* Profile container styling */
 .profile-container {
   position: relative;
   display: flex;
@@ -22,11 +25,12 @@ nav {
 }
 
 .profile-container img {
-  width: 40px;
-  height: 40px;
+  width: 40px; /* Set a fixed size */
+  height: 40px; /* Set a fixed size */
   border-radius: 50%;
 }
 
+/* Profile dropdown styling */
 .profile-dropdown {
   position: absolute;
   top: 50px;
@@ -34,57 +38,40 @@ nav {
   background-color: #333;
   padding: 10px;
   border-radius: 5px;
-  display: none;
+  display: none; /* Initially hidden */
   flex-direction: column;
+  width: 150px; /* Set a fixed width for better layout */
+  text-align: left;
+}
+
+.profile-dropdown p {
+  margin: 0 0 10px;
+  color: #fff;
 }
 
 .profile-dropdown a {
   color: #ff4500;
   text-decoration: none;
-  margin: 5px 0;
+  padding: 5px 0;
+}
+
+.profile-dropdown a:hover {
+  color: #ff6347; /* Lighter color on hover */
 }
 
 .profile-container:hover .profile-dropdown {
-  display: flex;
+  display: flex; /* Show dropdown on hover */
 }
 
-.search-container {
-  padding: 20px;
-  text-align: center;
-}
-
-.search-container input {
-  width: 50%;
+#toggleTheme {
+  background: #333;
+  color: #ff4500;
+  border: none;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #444;
+  cursor: pointer;
 }
 
-#featuredAnime, #trendingAnime {
-  padding: 20px;
-}
-
-.featured-grid, .trending-list {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.featured-grid .anime-card, .trending-list .anime-card {
-  width: 150px;
-  background-color: #1e1e1e;
-  padding: 10px;
-  border-radius: 5px;
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.featured-grid .anime-card:hover, .trending-list .anime-card:hover {
-  transform: scale(1.05);
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #1e1e1e;
+#toggleTheme:hover {
+  background: #444;
 }
