@@ -4,49 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Watch Hub</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="script.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Header and Logo -->
-  <header>
-    <h1>Anime Watch Hub</h1>
-    <button id="toggleTheme">Toggle Theme</button>
-  </header>
-
-  <!-- Profile and Navigation -->
   <nav>
     <div class="profile-container">
-      <!-- Profile Icon -->
-      <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile Icon">
-      <!-- Dropdown Menu -->
+      <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile">
       <div class="profile-dropdown">
-        <p id="welcomeMessage">Welcome, User!</p>
-        <a href="#" id="loginLink">Login/Signup</a>
-        <a href="#" id="profileLink" style="display: none;">Profile</a>
-        <a href="#" id="settingsLink">Settings</a>
-        <a href="#" id="logoutLink" style="display: none;">Logout</a>
+        <a href="#" id="profileLink">Profile</a>
+        <a href="#" id="loginLink">Login/SignUp</a>
+        <a href="#" id="logoutLink" style="display:none;">Logout</a>
       </div>
     </div>
+    <button id="toggleTheme">Toggle Theme</button>
   </nav>
 
-  <!-- Search Bar -->
-  <section>
-    <input type="text" id="searchBox" placeholder="Search anime...">
-  </section>
+  <div class="search-container">
+    <input type="text" id="searchBox" placeholder="Search for anime..." />
+  </div>
 
-  <!-- Content Sections -->
-  <main>
-    <h2>Featured Anime</h2>
-    <!-- Featured anime would go here -->
-    
-    <h2>Trending Anime</h2>
-    <!-- Trending anime would go here -->
-  </main>
+  <div id="animeResults">
+    <!-- Search results will be displayed here -->
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2024 Anime Watch Hub. All rights reserved.</p>
-  </footer>
+  <script src="js/script.js"></script>
 </body>
 </html>

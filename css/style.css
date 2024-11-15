@@ -13,6 +13,7 @@ nav {
   background-color: #1e1e1e;
 }
 
+/* Profile icon container */
 .profile-container {
   position: relative;
 }
@@ -24,19 +25,19 @@ nav {
   cursor: pointer;
 }
 
-/* Hide profile dropdown */
+/* Profile dropdown menu */
 .profile-dropdown {
   display: none;
   position: absolute;
   top: 50px;
-  right: 10px;
+  right: 0;
   background-color: #333;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.profile-container:hover .profile-dropdown {
+.profile-container:hover .profile-dropdown,
+.profile-container:focus-within .profile-dropdown {
   display: block;
 }
 
@@ -47,10 +48,44 @@ nav {
   display: block;
 }
 
+/* Button styling */
+button, a {
+  color: #fff;
+  background-color: #ff4500;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover, a:hover {
+  background-color: #ff5722;
+}
+
 #toggleTheme {
   background-color: #333;
   color: #ff4500;
   padding: 5px 10px;
   border: none;
   cursor: pointer;
+}
+
+#toggleTheme:hover {
+  background-color: #ff4500;
+  color: #fff;
+}
+
+/* Search bar */
+#searchBox {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+#searchBox:focus {
+  outline: none;
+  border: 2px solid #ff4500;
 }

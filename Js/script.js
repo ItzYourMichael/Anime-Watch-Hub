@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const profileLink = document.getElementById('profileLink');
   const logoutLink = document.getElementById('logoutLink');
   const toggleThemeButton = document.getElementById('toggleTheme');
+  const searchBox = document.getElementById('searchBox');
+  const animeResults = document.getElementById('animeResults');
 
   // Handle login
   loginLink.addEventListener('click', async (e) => {
@@ -26,6 +28,23 @@ document.addEventListener('DOMContentLoaded', () => {
       resetProfileUI();
     } catch (error) {
       console.error("Logout error:", error);
+    }
+  });
+
+  // Handle search
+  searchBox.addEventListener('input', async (e) => {
+    const query = e.target.value;
+    if (query.length > 2) {
+      const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&page=1`);
+      const data = await response.json();
+      animeResults.innerHTML = data.results.map(anime => `
+        <div>
+          <h4>${anime.title}</h4>
+          <img src="${anime.image_url}" alt="${anime.title}">
+        </div>
+      `).join('');
+    } else {
+      animeResults.innerHTML = '';
     }
   });
 
@@ -52,10 +71,4 @@ document.addEventListener('DOMContentLoaded', () => {
     loginLink.style.display = 'block';
     logoutLink.style.display = 'none';
   }
-
-  // Close the profile dropdown when right-click (context menu) is triggered
-  document.addEventListener('contextmenu', () => {
-    const dropdown = document.querySelector('.profile-dropdown');
-    if (dropdown) dropdown.style.display = 'none';
-  });
 });
