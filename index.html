@@ -5,46 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Watch Hub</title>
   <link rel="stylesheet" href="style.css">
-  <script type="module" defer src="script.js"></script>
+  <script type="module" src="script.js" defer></script>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav>
+  <!-- Header and Logo -->
+  <header>
     <h1>Anime Watch Hub</h1>
+    <button id="toggleTheme">Toggle Theme</button>
+  </header>
+
+  <!-- Profile and Navigation -->
+  <nav>
     <div class="profile-container">
+      <!-- Profile Icon -->
       <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile Icon">
-      <div class="profile-dropdown hidden">
-        <p>Welcome, User!</p>
+      <!-- Dropdown Menu -->
+      <div class="profile-dropdown">
+        <p id="welcomeMessage">Welcome, User!</p>
         <a href="#" id="loginLink">Login/Signup</a>
-        <a href="#" id="profileLink">Profile</a>
+        <a href="#" id="profileLink" style="display: none;">Profile</a>
         <a href="#" id="settingsLink">Settings</a>
-        <a href="#" id="logoutLink">Logout</a>
+        <a href="#" id="logoutLink" style="display: none;">Logout</a>
       </div>
     </div>
-    <button id="toggleTheme">Toggle Theme</button>
   </nav>
 
-  <!-- Search Box -->
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search for an anime...">
-  </div>
+  <!-- Search Bar -->
+  <section>
+    <input type="text" id="searchBox" placeholder="Search anime...">
+  </section>
 
-  <!-- Featured Anime Section -->
-  <section id="featuredAnime">
+  <!-- Content Sections -->
+  <main>
     <h2>Featured Anime</h2>
-    <div class="featured-grid">
-      <!-- Anime cards go here -->
-    </div>
-  </section>
-
-  <!-- Trending Anime Section -->
-  <section id="trendingAnime">
+    <!-- Featured anime would go here -->
+    
     <h2>Trending Anime</h2>
-    <div class="trending-list">
-      <!-- Trending anime list goes here -->
-    </div>
-  </section>
+    <!-- Trending anime would go here -->
+  </main>
 
-  <footer>&copy; 2024 Anime Watch Hub. All rights reserved.</footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Anime Watch Hub. All rights reserved.</p>
+  </footer>
 </body>
 </html>
