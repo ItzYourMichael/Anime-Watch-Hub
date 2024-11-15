@@ -1,4 +1,4 @@
-const clientId = '699bdb47b4de16e03049b6eb2a1b297a'; // Replace with your MyAnimeList API client ID
+const clientId = '699bdb47b4de16e03049b6eb2a1b297a';
 
 // Function to search anime from MyAnimeList
 async function searchAnime(query) {

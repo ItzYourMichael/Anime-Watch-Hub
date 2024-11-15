@@ -13,13 +13,17 @@
         <h1>Anime Watch Hub</h1>
         <!-- Search Section -->
         <input id="searchBox" type="text" placeholder="Search Anime..." autocomplete="off">
+        
+        <!-- Profile Dropdown -->
         <div class="profile-container">
             <img id="profileIcon" src="assets/Profiles/default-profile.png" alt="Profile Icon">
             <div id="profileDropdown" class="dropdown hidden">
                 <ul>
+                    <li id="greetingMessage" class="hidden">Welcome, <span id="username">User</span>!</li>
                     <li><a href="login.html" id="loginBtn">Login/Signup</a></li>
                     <li><a href="profile.html" id="profileBtn" class="hidden">Profile</a></li>
                     <li><a href="settings.html">Settings</a></li>
+                    <li><a href="#" id="logoutBtn" class="hidden">Logout</a></li>
                 </ul>
             </div>
         </div>
