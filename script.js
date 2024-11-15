@@ -9,11 +9,11 @@ async function searchAnime(query) {
         'X-MAL-CLIENT-ID': clientId
       }
     });
-    
+
     if (!response.ok) {
       throw new Error('Failed to fetch anime data');
     }
-    
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -37,7 +37,7 @@ function displayAnimeResults(animeData) {
   resultsContainer.innerHTML = ''; // Clear previous results
 
   if (!animeData || animeData.data.length === 0) {
-    resultsContainer.innerHTML = '<p>No results found.</p>';
+    resultsContainer.innerHTML = '<p style="text-align:center;">No results found.</p>';
     return;
   }
 
@@ -45,7 +45,7 @@ function displayAnimeResults(animeData) {
     const animeCard = document.createElement('div');
     animeCard.className = 'anime-card';
     animeCard.innerHTML = `
-      <img src="${anime.node.main_picture ? anime.node.main_picture.medium : ''}" alt="${anime.node.title}">
+      <img src="${anime.node.main_picture ? anime.node.main_picture.medium : 'default-image.jpg'}" alt="${anime.node.title}">
       <h3>${anime.node.title}</h3>
     `;
     resultsContainer.appendChild(animeCard);
