@@ -1,71 +1,54 @@
 import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from './firebase.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const searchBox = document.getElementById('searchBox');
+  const resultsContainer = document.getElementById('results');
+  const themeToggle = document.getElementById('themeToggle');
   const profileIcon = document.getElementById('profileIcon');
   const dropdown = document.getElementById('profileDropdown');
-  const loginBtn = document.getElementById('loginBtn');
-  const profileBtn = document.getElementById('profileBtn');
-  const logoutBtn = document.getElementById('logoutBtn');
-  const greetingMessage = document.getElementById('greetingMessage');
-  const usernameSpan = document.getElementById('username');
 
-  let userProfile = {
-    username: '',
-    profilePic: 'assets/Profiles/default-profile.png',
-  };
-
-  // Monitor authentication state
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is logged in
-      userProfile.username = user.displayName || 'Anime Fan';
-      userProfile.profilePic = user.photoURL || 'assets/Profiles/default-profile.png';
-
-      loginBtn.classList.add('hidden');
-      logoutBtn.classList.remove('hidden');
-      profileBtn.classList.remove('hidden');
-      greetingMessage.classList.remove('hidden');
-      usernameSpan.textContent = userProfile.username;
-      profileIcon.src = userProfile.profilePic;
-    } else {
-      // User is logged out
-      loginBtn.classList.remove('hidden');
-      logoutBtn.classList.add('hidden');
-      profileBtn.classList.add('hidden');
-      greetingMessage.classList.add('hidden');
-      profileIcon.src = 'assets/Profiles/default-profile.png';
-    }
+  // Theme Toggle
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.dataset.theme || 'dark';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.dataset.theme = newTheme;
+    themeToggle.querySelector('img').src = `assets/icons/${newTheme}-mode.svg`;
   });
 
-  // Login with Google
-  loginBtn.addEventListener('click', async () => {
-    try {
-      await signInWithPopup(auth, provider);
-      alert('Successfully logged in!');
-    } catch (error) {
-      console.error('Login failed:', error.message);
-    }
-  });
-
-  // Logout
-  logoutBtn.addEventListener('click', async () => {
-    try {
-      await signOut(auth);
-      alert('Successfully logged out!');
-    } catch (error) {
-      console.error('Logout failed:', error.message);
-    }
-  });
-
-  // Toggle dropdown on profile icon click
+  // Profile Dropdown Toggle
   profileIcon.addEventListener('click', () => {
     dropdown.classList.toggle('hidden');
   });
 
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!profileIcon.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add('hidden');
+  // Search Anime
+  searchBox.addEventListener('input', async () => {
+    const query = searchBox.value.trim();
+    if (query.length > 2) {
+      resultsContainer.innerHTML = '<div class="spinner"></div>'; // Show spinner
+      try {
+        const response = await fetch(`https://api.myanimelist.net/v2/anime?q=${query}&limit=10`, {
+          headers: {
+            'X-MAL-CLIENT-ID': '699bdb47b4de16e03049b6eb2a1b297a'
+          }
+        });
+        const data = await response.json();
+        displaySearchResults(data);
+      } catch (error) {
+        console.error('Search failed:', error);
+      }
     }
   });
+
+  function displaySearchResults(data) {
+    resultsContainer.innerHTML = '';
+    data.data.forEach((anime) => {
+      const card = document.createElement('div');
+      card.className = 'anime-card';
+      card.innerHTML = `
+        <img src="${anime.node.main_picture.medium}" alt="${anime.node.title}">
+        <h3>${anime.node.title}</h3>
+      `;
+      resultsContainer.appendChild(card);
+    });
+  }
 });
