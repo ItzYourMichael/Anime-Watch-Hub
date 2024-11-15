@@ -3,11 +3,8 @@ body {
   background-color: #121212;
   color: #fff;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
-/* Navbar styling */
 nav {
   display: flex;
   justify-content: space-between;
@@ -16,62 +13,44 @@ nav {
   background-color: #1e1e1e;
 }
 
-/* Profile container styling */
 .profile-container {
   position: relative;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
 }
 
 .profile-container img {
-  width: 40px; /* Set a fixed size */
-  height: 40px; /* Set a fixed size */
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
-/* Profile dropdown styling */
+/* Hide profile dropdown */
 .profile-dropdown {
+  display: none;
   position: absolute;
   top: 50px;
-  right: 0;
+  right: 10px;
   background-color: #333;
   padding: 10px;
   border-radius: 5px;
-  display: none; /* Initially hidden */
-  flex-direction: column;
-  width: 150px; /* Set a fixed width for better layout */
-  text-align: left;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.profile-dropdown p {
-  margin: 0 0 10px;
-  color: #fff;
+.profile-container:hover .profile-dropdown {
+  display: block;
 }
 
 .profile-dropdown a {
   color: #ff4500;
   text-decoration: none;
   padding: 5px 0;
-}
-
-.profile-dropdown a:hover {
-  color: #ff6347; /* Lighter color on hover */
-}
-
-.profile-container:hover .profile-dropdown {
-  display: flex; /* Show dropdown on hover */
+  display: block;
 }
 
 #toggleTheme {
-  background: #333;
+  background-color: #333;
   color: #ff4500;
+  padding: 5px 10px;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
   cursor: pointer;
-}
-
-#toggleTheme:hover {
-  background: #444;
 }
