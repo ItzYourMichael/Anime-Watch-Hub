@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settings</title>
+    <title>Settings - Anime Watch Hub</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Settings</h2>
-    <p>Change your preferences here!</p>
+    <main class="settings-container">
+        <h2>Settings</h2>
+        <div class="setting-item">
+            <label for="theme-toggle">Theme</label>
+            <button id="theme-toggle">Toggle Theme</button>
+        </div>
+        <div class="setting-item">
+            <label for="font-size">Font Size</label>
+            <select id="font-size">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+        <div class="setting-item">
+            <label for="language">Language</label>
+            <select id="language">
+                <option value="en" selected>English</option>
+                <option value="jp">Japanese</option>
+                <option value="es">Spanish</option>
+            </select>
+        </div>
+        <button id="save-settings">Save Settings</button>
+    </main>
+    <script src="js/settings.js"></script>
 </body>
 </html>
