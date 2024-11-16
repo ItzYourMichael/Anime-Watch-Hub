@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Watch Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <script src="js/anime.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
@@ -16,9 +18,9 @@
             <div id="profile-menu">
                 <a href="login.html">Login</a>
                 <a href="signup.html">Sign Up</a>
-                <a href="profile.html">Profile</a>
+                <a href="profile.html" id="profile-link">Profile</a>
                 <a href="settings.html">Settings</a>
-                <a href="#" id="logout-btn">Logout</a>
+                <button id="logout-btn">Logout</button>
             </div>
         </div>
     </header>

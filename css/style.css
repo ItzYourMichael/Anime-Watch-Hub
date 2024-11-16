@@ -58,18 +58,11 @@ header {
     color: #fff;
 }
 
-#loading-spinner {
-    text-align: center;
-    margin: 20px;
-    font-size: 1.2em;
-    color: #ff4500;
-}
-
 .hidden {
     display: none;
 }
 
-#search-results {
+#search-results, #random-results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
