@@ -1,74 +1,29 @@
-import { auth, provider, signInWithPopup, signOut, onAuthStateChanged } from './firebase.js';
-
 document.addEventListener('DOMContentLoaded', () => {
-  const profileIcon = document.getElementById('profileIcon');
-  const loginLink = document.getElementById('loginLink');
-  const profileLink = document.getElementById('profileLink');
-  const logoutLink = document.getElementById('logoutLink');
-  const toggleThemeButton = document.getElementById('toggleTheme');
   const searchBox = document.getElementById('searchBox');
   const animeResults = document.getElementById('animeResults');
 
-  // Handle login
-  loginLink.addEventListener('click', async (e) => {
-    e.preventDefault();
-    try {
-      const result = await signInWithPopup(auth, provider);
-      updateProfileUI(result.user);
-    } catch (error) {
-      console.error("Login error:", error);
-    }
-  });
-
-  // Handle logout
-  logoutLink.addEventListener('click', async (e) => {
-    e.preventDefault();
-    try {
-      await signOut(auth);
-      resetProfileUI();
-    } catch (error) {
-      console.error("Logout error:", error);
-    }
-  });
-
-  // Handle search
-  searchBox.addEventListener('input', async (e) => {
-    const query = e.target.value;
-    if (query.length > 2) {
-      const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=${query}&page=1`);
+  // Search Functionality
+  document.getElementById('searchButton').addEventListener('click', async () => {
+    const query = searchBox.value.trim();
+    if (query.length > 0) {
+      const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`);
       const data = await response.json();
-      animeResults.innerHTML = data.results.map(anime => `
-        <div class="anime-result">
-          <h4>${anime.title}</h4>
-          <img src="${anime.image_url}" alt="${anime.title}" width="100">
-        </div>
-      `).join('');
+      displayAnimeResults(data.data);
     } else {
-      animeResults.innerHTML = '';
+      animeResults.innerHTML = '<p class="text-light">Please enter a search term.</p>';
     }
   });
 
-  // Theme toggle
-  toggleThemeButton.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-  });
-
-  // Auth state listener
-  onAuthStateChanged(auth, (user) => {
-    user ? updateProfileUI(user) : resetProfileUI();
-  });
-
-  function updateProfileUI(user) {
-    profileIcon.src = user.photoURL || "assets/images/default-profile.png";
-    profileLink.textContent = user.displayName || "Profile";
-    loginLink.style.display = 'none';
-    logoutLink.style.display = 'block';
-  }
-
-  function resetProfileUI() {
-    profileIcon.src = "assets/images/default-profile.png";
-    profileLink.textContent = "Profile";
-    loginLink.style.display = 'block';
-    logoutLink.style.display = 'none';
+  function displayAnimeResults(results) {
+    animeResults.innerHTML = results.map(anime => `
+      <div class="col-md-3">
+        <div class="card">
+          <img src="${anime.images.jpg.image_url}" class="card-img-top" alt="${anime.title}">
+          <div class="card-body">
+            <h5 class="card-title">${anime.title}</h5>
+          </div>
+        </div>
+      </div>
+    `).join('');
   }
 });

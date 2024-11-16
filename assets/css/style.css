@@ -1,8 +1,8 @@
-/* General styles */
+/* General Styles */
 body {
   background-color: #121212;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .navbar-brand {
@@ -10,17 +10,15 @@ body {
   font-size: 1.5rem;
 }
 
-/* Profile icon container */
 .profile-container {
   position: relative;
-  display: inline-block;
+  margin-left: 20px;
 }
 
 .profile-container img {
   cursor: pointer;
 }
 
-/* Profile dropdown */
 .profile-dropdown {
   display: none;
   position: absolute;
@@ -29,36 +27,44 @@ body {
   background-color: #333;
   padding: 10px;
   border-radius: 5px;
-  min-width: 120px;
   text-align: left;
-  z-index: 1;
 }
 
-.profile-container:hover .profile-dropdown,
-.profile-container:focus-within .profile-dropdown {
+.profile-container:hover .profile-dropdown {
   display: block;
 }
 
 .profile-dropdown a {
   color: #ff4500;
   text-decoration: none;
-  padding: 8px 10px;
   display: block;
+  padding: 5px 10px;
 }
 
 .profile-dropdown a:hover {
   background-color: #444;
 }
 
-/* Search Box */
 #searchBox {
+  background-color: #222;
   border: 2px solid #ff4500;
-  background-color: #333;
-  color: #fff;
+  color: white;
 }
 
 #searchBox:focus {
-  outline: none;
   border-color: #ff5722;
+  outline: none;
 }
 
+#animeResults .card {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  margin: 10px;
+}
+
+footer {
+  background-color: #000;
+  padding: 20px;
+  margin-top: 40px;
+}
