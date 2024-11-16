@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Watch Hub</title>
   <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/site.js"></script>
   <script defer src="js/anime.js"></script>
+  <script defer src="js/site.js"></script>
 </head>
 <body>
   <header>
@@ -15,34 +15,20 @@
     </div>
     <nav>
       <a href="index.html">Home</a>
-      <a href="login.html">Login</a>
       <a href="profile.html">Profile</a>
+      <a href="settings.html">Settings</a>
     </nav>
     <div class="search-container">
       <input id="search-box" type="text" placeholder="Search for anime...">
       <button id="search-btn" onclick="searchAnime()">Search</button>
-    </div>
-    <div class="filter-container">
-      <select id="filter-genre">
-        <option value="">All Genres</option>
-        <option value="action">Action</option>
-        <option value="drama">Drama</option>
-        <option value="comedy">Comedy</option>
-        <option value="fantasy">Fantasy</option>
-      </select>
-      <select id="sort-options">
-        <option value="popularity">Sort by Popularity</option>
-        <option value="score">Sort by Score</option>
-        <option value="date">Sort by Release Date</option>
-      </select>
     </div>
   </header>
 
   <main>
     <section id="results">
       <h2>Search Results</h2>
+      <div id="loading-spinner" class="hidden">Loading...</div>
       <div id="search-results"></div>
-      <button id="load-more-btn" onclick="loadMoreAnime()">Load More</button>
     </section>
 
     <section id="watchlist">
@@ -53,6 +39,7 @@
 
   <footer>
     <p>&copy; 2024 Anime Watch Hub</p>
+    <button id="theme-toggle-btn">Toggle Dark Theme</button>
   </footer>
 </body>
 </html>

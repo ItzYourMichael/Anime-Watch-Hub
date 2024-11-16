@@ -1,83 +1,47 @@
-let currentPage = 1;
+// Jikan API Base URL
+const API_URL = "https://api.jikan.moe/v4/anime?q=";
 
-// Search anime
-function searchAnime() {
+// Search Anime Function
+async function searchAnime() {
   const query = document.getElementById("search-box").value.trim();
-  const genre = document.getElementById("filter-genre").value;
-  const sort = document.getElementById("sort-options").value;
+  const resultsContainer = document.getElementById("search-results");
+  const loadingSpinner = document.getElementById("loading-spinner");
 
   if (!query) {
     alert("Please enter an anime name!");
     return;
   }
 
-  fetchAnime(query, genre, sort, 1);
-}
+  // Show loading spinner
+  loadingSpinner.classList.remove("hidden");
 
-// Fetch anime from Jikan API
-function fetchAnime(query, genre, sort, page) {
-  const genreFilter = genre ? `&genres=${genre}` : "";
-  const url = `https://api.jikan.moe/v4/anime?q=${query}${genreFilter}&order_by=${sort}&page=${page}`;
+  try {
+    const response = await fetch(`${API_URL}${query}`);
+    const data = await response.json();
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.data && data.data.length > 0) {
-        displayAnimeResults(data.data, page > 1);
-      } else {
-        alert("No results found.");
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      alert("Error fetching anime. Please try again.");
-    });
-}
+    // Clear previous results
+    resultsContainer.innerHTML = "";
+    loadingSpinner.classList.add("hidden");
 
-// Display anime results
-function displayAnimeResults(animeList, append = false) {
-  const resultsContainer = document.getElementById("search-results");
-  if (!append) resultsContainer.innerHTML = "";
+    if (data.data && data.data.length > 0) {
+      data.data.forEach((anime) => {
+        const card = document.createElement("div");
+        card.classList.add("card");
 
-  animeList.forEach((anime) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
+        card.innerHTML = `
+          <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
+          <h3>${anime.title}</h3>
+          <p>Score: ${anime.score || "N/A"}</p>
+          <a href="${anime.url}" target="_blank">More Info</a>
+        `;
 
-    card.innerHTML = `
-      <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
-      <h3>${anime.title}</h3>
-      <p>Score: ${anime.score || "N/A"}</p>
-      <button onclick="addToWatchlist('${anime.title}', '${anime.images.jpg.image_url}')">Add to Watchlist</button>
-      <a href="${anime.url}" target="_blank">More Info</a>
-    `;
-
-    resultsContainer.appendChild(card);
-  });
-}
-
-// Add to watchlist
-function addToWatchlist(title, image) {
-  const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-  watchlist.push({ title, image });
-  localStorage.setItem("watchlist", JSON.stringify(watchlist));
-  displayWatchlist();
-}
-
-// Display watchlist
-function displayWatchlist() {
-  const container = document.getElementById("watchlist-container");
-  const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-  container.innerHTML = "";
-
-  watchlist.forEach((anime) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-
-    card.innerHTML = `
-      <img src="${anime.image}" alt="${anime.title}">
-      <h3>${anime.title}</h3>
-    `;
-
-    container.appendChild(card);
-  });
+        resultsContainer.appendChild(card);
+      });
+    } else {
+      resultsContainer.innerHTML = "<p>No results found.</p>";
+    }
+  } catch (error) {
+    console.error("Error fetching anime data:", error);
+    resultsContainer.innerHTML = "<p>Error fetching data. Please try again later.</p>";
+  }
 }

@@ -7,9 +7,13 @@ body {
   color: #ffffff;
 }
 
+.hidden {
+  display: none;
+}
+
 header {
   background-color: #1e1e1e;
-  padding: 15px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,42 +24,31 @@ header .logo h1 {
   margin: 0;
 }
 
-nav {
-  display: flex;
-  gap: 15px;
-}
-
 nav a {
   color: #ffffff;
   text-decoration: none;
+  margin: 0 10px;
   font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
 }
 
-nav a:hover {
-  background-color: #ff4500;
-}
-
-.search-container,
-.filter-container {
+.search-container {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .search-container input {
-  width: 60%;
   padding: 10px;
   border: 1px solid #ff4500;
   border-radius: 5px;
-  margin-right: 10px;
+  width: 60%;
 }
 
 .search-container button {
-  padding: 10px 20px;
+  padding: 10px;
+  margin-left: 10px;
   background-color: #ff4500;
-  color: #fff;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -65,17 +58,7 @@ nav a:hover {
   background-color: #e03d00;
 }
 
-.filter-container select {
-  margin: 0 10px;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #1e1e1e;
-  color: #fff;
-}
-
-/* Results Section */
-#results {
+#results, #watchlist {
   padding: 20px;
 }
 
@@ -87,11 +70,10 @@ nav a:hover {
 
 .card {
   background-color: #1e1e1e;
-  border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
   width: 200px;
+  border-radius: 10px;
   text-align: center;
-  color: #ffffff;
 }
 
 .card img {
@@ -100,25 +82,26 @@ nav a:hover {
 }
 
 .card h3 {
+  color: white;
   margin: 10px 0;
 }
 
-.card button {
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e1e1e;
+}
+
+button#theme-toggle-btn {
+  padding: 10px;
+  margin-top: 10px;
   background-color: #ff4500;
-  color: #ffffff;
+  color: white;
   border: none;
-  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.card button:hover {
+button#theme-toggle-btn:hover {
   background-color: #e03d00;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #1e1e1e;
-  padding: 10px 0;
 }
