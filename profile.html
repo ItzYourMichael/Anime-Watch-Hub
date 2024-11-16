@@ -3,10 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Profile - Anime Watch Hub</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h2>Your Profile</h2>
-    <p>Welcome to your profile page!</p>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Anime Watch Hub</h1>
+            </div>
+            <div class="nav-links">
+                <button id="logout-btn">Logout</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="profile-container">
+            <img src="images/avatar.png" alt="Profile Picture">
+            <h2 id="user-email">User Email</h2>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Anime Watch Hub. All rights reserved.</p>
+    </footer>
+    <script src="js/auth.js"></script>
 </body>
 </html>

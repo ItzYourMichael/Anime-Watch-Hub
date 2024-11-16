@@ -5,41 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anime Watch Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/themes.css">
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="js/anime.js" defer></script>
-    <script src="js/script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Anime Watch Hub</h1>
-        <div id="profile-section">
-            <img src="assets/icons/user.png" alt="Profile" id="profile-icon">
-            <div id="profile-menu">
-                <a href="login.html" id="login-link">Login</a>
-                <a href="signup.html" id="signup-link">Sign Up</a>
-                <a href="profile.html" id="profile-link">Profile</a>
-                <a href="settings.html">Settings</a>
-                <button id="logout-btn" class="hidden">Logout</button>
+        <nav>
+            <div class="logo">
+                <h1>Anime Watch Hub</h1>
             </div>
-        </div>
+            <div class="nav-links">
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign Up</a>
+                <a href="profile.html">Profile</a>
+                <button id="theme-toggle">🌙</button>
+            </div>
+        </nav>
     </header>
     <main>
-        <section id="search-section">
-            <input type="text" id="search-box" placeholder="Search for anime...">
-            <button id="search-button" onclick="searchAnime()">Search</button>
-        </section>
-        <div id="loading-spinner" class="hidden">Loading...</div>
-        <div id="search-results"></div>
-        <section id="random-anime">
-            <h2>Discover Random Anime</h2>
-            <button onclick="fetchRandomAnime()">Get Random Anime</button>
-            <div id="random-results"></div>
-        </section>
+        <h2>Welcome to Anime Watch Hub</h2>
+        <p>Find, search, and explore anime with ease.</p>
+        <form id="search-form">
+            <input type="text" id="search-box" placeholder="Search for an anime..." />
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results" class="anime-grid"></div>
     </main>
     <footer>
-        <p>&copy; 2024 Anime Watch Hub. All Rights Reserved.</p>
+        <p>© 2024 Anime Watch Hub. All rights reserved.</p>
     </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
