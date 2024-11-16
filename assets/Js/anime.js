@@ -1,21 +1,20 @@
-let currentPage = 1; // For infinite scrolling
+let currentPage = 1;
 
-// Search anime with filters
+// Search anime
 function searchAnime() {
   const query = document.getElementById("search-box").value.trim();
   const genre = document.getElementById("filter-genre").value;
   const sort = document.getElementById("sort-options").value;
 
   if (!query) {
-    displayMessage("Please enter a search query.");
+    alert("Please enter an anime name!");
     return;
   }
 
-  displayMessage("Searching...");
   fetchAnime(query, genre, sort, 1);
 }
 
-// Fetch anime from Jikan API with filters and pagination
+// Fetch anime from Jikan API
 function fetchAnime(query, genre, sort, page) {
   const genreFilter = genre ? `&genres=${genre}` : "";
   const url = `https://api.jikan.moe/v4/anime?q=${query}${genreFilter}&order_by=${sort}&page=${page}`;
@@ -24,27 +23,27 @@ function fetchAnime(query, genre, sort, page) {
     .then((response) => response.json())
     .then((data) => {
       if (data.data && data.data.length > 0) {
-        displayAnimeResults(data.data, page > 1); // Append for infinite scroll
+        displayAnimeResults(data.data, page > 1);
       } else {
-        displayMessage("No results found.");
+        alert("No results found.");
       }
     })
     .catch((error) => {
       console.error(error);
-      displayMessage("Error fetching data.");
+      alert("Error fetching anime. Please try again.");
     });
 }
 
 // Display anime results
 function displayAnimeResults(animeList, append = false) {
   const resultsContainer = document.getElementById("search-results");
-  if (!append) resultsContainer.innerHTML = ""; // Clear previous results
+  if (!append) resultsContainer.innerHTML = "";
 
   animeList.forEach((anime) => {
-    const animeCard = document.createElement("div");
-    animeCard.classList.add("card");
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    animeCard.innerHTML = `
+    card.innerHTML = `
       <img src="${anime.images.jpg.image_url}" alt="${anime.title}">
       <h3>${anime.title}</h3>
       <p>Score: ${anime.score || "N/A"}</p>
@@ -52,21 +51,11 @@ function displayAnimeResults(animeList, append = false) {
       <a href="${anime.url}" target="_blank">More Info</a>
     `;
 
-    resultsContainer.appendChild(animeCard);
+    resultsContainer.appendChild(card);
   });
 }
 
-// Infinite scroll: Load more anime
-function loadMoreAnime() {
-  const query = document.getElementById("search-box").value.trim();
-  const genre = document.getElementById("filter-genre").value;
-  const sort = document.getElementById("sort-options").value;
-
-  currentPage++;
-  fetchAnime(query, genre, sort, currentPage);
-}
-
-// Add to Watchlist
+// Add to watchlist
 function addToWatchlist(title, image) {
   const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
   watchlist.push({ title, image });
@@ -74,27 +63,21 @@ function addToWatchlist(title, image) {
   displayWatchlist();
 }
 
-// Display Watchlist
+// Display watchlist
 function displayWatchlist() {
-  const watchlistContainer = document.getElementById("watchlist-container");
+  const container = document.getElementById("watchlist-container");
   const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-  watchlistContainer.innerHTML = "";
+  container.innerHTML = "";
 
   watchlist.forEach((anime) => {
-    const animeCard = document.createElement("div");
-    animeCard.classList.add("card");
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    animeCard.innerHTML = `
+    card.innerHTML = `
       <img src="${anime.image}" alt="${anime.title}">
       <h3>${anime.title}</h3>
     `;
 
-    watchlistContainer.appendChild(animeCard);
+    container.appendChild(card);
   });
-}
-
-// Display a message in the results container
-function displayMessage(message) {
-  const resultsContainer = document.getElementById("search-results");
-  resultsContainer.innerHTML = `<p>${message}</p>`;
 }

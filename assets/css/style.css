@@ -1,12 +1,72 @@
-/* Filter Section */
-#filter-container {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #121212;
+  color: #ffffff;
+}
+
+header {
+  background-color: #1e1e1e;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo h1 {
+  color: #ff4500;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  background-color: #ff4500;
+}
+
+.search-container,
+.filter-container {
   display: flex;
   justify-content: center;
-  gap: 10px;
   margin: 20px 0;
 }
 
-#filter-container select {
+.search-container input {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ff4500;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-container button {
+  padding: 10px 20px;
+  background-color: #ff4500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #e03d00;
+}
+
+.filter-container select {
+  margin: 0 10px;
   padding: 10px;
   border: none;
   border-radius: 5px;
@@ -14,31 +74,51 @@
   color: #fff;
 }
 
-#load-more-btn {
-  display: block;
-  margin: 20px auto;
-  padding: 10px 20px;
+/* Results Section */
+#results {
+  padding: 20px;
+}
+
+#search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card button {
   background-color: #ff4500;
-  color: white;
-  font-weight: bold;
+  color: #ffffff;
   border: none;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-/* Watchlist Section */
-#watchlist {
-  padding: 20px;
+.card button:hover {
+  background-color: #e03d00;
+}
+
+/* Footer */
+footer {
+  text-align: center;
   background-color: #1e1e1e;
-  border-radius: 10px;
-}
-
-#watchlist h2 {
-  color: #ff4500;
-}
-
-#watchlist-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  padding: 10px 0;
 }

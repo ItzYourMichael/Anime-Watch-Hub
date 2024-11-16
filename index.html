@@ -5,22 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Watch Hub</title>
   <link rel="stylesheet" href="css/style.css">
-  <script defer src="js/script.js"></script>
-  <script defer src="js/anim.js"></script>
+  <script defer src="js/site.js"></script>
+  <script defer src="js/anime.js"></script>
 </head>
 <body>
   <header>
-    <h1>Anime Watch Hub</h1>
+    <div class="logo">
+      <h1>Anime Watch Hub</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="login.html">Login</a>
-      <a href="privacy.html">Privacy</a>
+      <a href="profile.html">Profile</a>
     </nav>
-    <div id="search-container">
+    <div class="search-container">
       <input id="search-box" type="text" placeholder="Search for anime...">
       <button id="search-btn" onclick="searchAnime()">Search</button>
     </div>
-    <div id="filter-container">
+    <div class="filter-container">
       <select id="filter-genre">
         <option value="">All Genres</option>
         <option value="action">Action</option>
