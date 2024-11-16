@@ -1,70 +1,48 @@
-/* General Styles */
 body {
+  font-family: Arial, sans-serif;
   background-color: #121212;
-  color: #fff;
-  font-family: 'Roboto', sans-serif;
+  color: white;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-brand {
-  font-weight: bold;
-  font-size: 1.5rem;
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-.profile-container {
-  position: relative;
-  margin-left: 20px;
+.input-group {
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.profile-container img {
-  cursor: pointer;
-}
-
-.profile-dropdown {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background-color: #333;
+input {
+  flex: 1;
   padding: 10px;
-  border-radius: 5px;
-  text-align: left;
-}
-
-.profile-container:hover .profile-dropdown {
-  display: block;
-}
-
-.profile-dropdown a {
-  color: #ff4500;
-  text-decoration: none;
-  display: block;
-  padding: 5px 10px;
-}
-
-.profile-dropdown a:hover {
-  background-color: #444;
-}
-
-#searchBox {
-  background-color: #222;
+  font-size: 16px;
   border: 2px solid #ff4500;
+  background-color: #333;
   color: white;
 }
 
-#searchBox:focus {
-  border-color: #ff5722;
-  outline: none;
-}
-
-#animeResults .card {
-  background-color: #333;
-  color: #fff;
+button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #ff4500;
   border: none;
-  margin: 10px;
+  color: white;
+  cursor: pointer;
 }
 
-footer {
-  background-color: #000;
-  padding: 20px;
-  margin-top: 40px;
+button:hover {
+  background-color: #ff5722;
+}
+
+.search-results .card {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #333;
+  border: 1px solid #ff4500;
+  color: white;
 }

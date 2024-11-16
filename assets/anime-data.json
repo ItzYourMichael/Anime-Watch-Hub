@@ -1,0 +1,7 @@
+[
+  { "title": "Naruto", "genre": "Action", "year": 2002, "rating": 8.3 },
+  { "title": "Attack on Titan", "genre": "Action, Drama", "year": 2013, "rating": 9.0 },
+  { "title": "My Hero Academia", "genre": "Action, Superhero", "year": 2016, "rating": 8.0 },
+  { "title": "Demon Slayer", "genre": "Action, Supernatural", "year": 2019, "rating": 8.7 },
+  { "title": "One Piece", "genre": "Adventure", "year": 1999, "rating": 9.2 }
+]

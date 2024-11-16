@@ -1,29 +1,43 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const searchBox = document.getElementById('searchBox');
-  const animeResults = document.getElementById('animeResults');
+// Load anime data from anime-data.json
+let animeList = [];
 
-  // Search Functionality
-  document.getElementById('searchButton').addEventListener('click', async () => {
-    const query = searchBox.value.trim();
-    if (query.length > 0) {
-      const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`);
-      const data = await response.json();
-      displayAnimeResults(data.data);
-    } else {
-      animeResults.innerHTML = '<p class="text-light">Please enter a search term.</p>';
-    }
-  });
+fetch('assets/anime-data.json')
+  .then((response) => response.json())
+  .then((data) => {
+    animeList = data;
+  })
+  .catch((error) => console.error('Error loading anime data:', error));
 
-  function displayAnimeResults(results) {
-    animeResults.innerHTML = results.map(anime => `
-      <div class="col-md-3">
-        <div class="card">
-          <img src="${anime.images.jpg.image_url}" class="card-img-top" alt="${anime.title}">
-          <div class="card-body">
-            <h5 class="card-title">${anime.title}</h5>
-          </div>
-        </div>
-      </div>
-    `).join('');
+// Perform search when the user clicks the search button or types in the search box
+function performSearch() {
+  const searchQuery = document.getElementById('search-box').value.toLowerCase();
+  const results = animeList.filter((anime) =>
+    anime.title.toLowerCase().includes(searchQuery)
+  );
+
+  displayResults(results);
+}
+
+// Display search results dynamically
+function displayResults(results) {
+  const resultsContainer = document.getElementById('search-results');
+  resultsContainer.innerHTML = ''; // Clear previous results
+
+  if (results.length === 0) {
+    resultsContainer.innerHTML = '<p class="text-danger">No results found.</p>';
+    return;
   }
-});
+
+  results.forEach((anime) => {
+    const animeCard = document.createElement('div');
+    animeCard.className = 'card';
+    animeCard.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">${anime.title}</h5>
+        <p class="card-text">Genre: ${anime.genre}</p>
+        <p class="card-text">Year: ${anime.year} | Rating: ${anime.rating}</p>
+      </div>
+    `;
+    resultsContainer.appendChild(animeCard);
+  });
+}
