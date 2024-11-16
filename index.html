@@ -5,21 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anime Watch Hub</title>
   <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <!-- Search Section -->
-    <h1>Welcome to Anime Watch Hub</h1>
-    <div class="input-group">
-      <input id="search-box" type="text" class="form-control" placeholder="Search anime..." aria-label="Search anime">
-      <button class="btn btn-primary" onclick="performSearch()">Search</button>
-    </div>
+  <header>
+    <h1>Anime Watch Hub</h1>
+    <input
+      id="search-box"
+      type="text"
+      placeholder="Search for anime..."
+      oninput="debounceSearch()"
+    />
+    <button id="search-btn" onclick="performSearch()">Search</button>
+  </header>
 
-    <!-- Search Results -->
-    <div id="search-results" class="search-results"></div>
-  </div>
+  <main>
+    <section id="search-results"></section>
+  </main>
 
-  <!-- JavaScript -->
-  <script src="js/script.js"></script>
+  <footer>
+    <p>&copy; 2024 Anime Watch Hub</p>
+  </footer>
 </body>
 </html>
